@@ -18,7 +18,8 @@ const FormSignup = () => {
              <label htmlFor="username" className="form-label">
                 Username
              </label>
-             <input type="text"  className="form-input option" placeholder='Enter your username'  id='username' name='username'  value={values.username} onChange={handleChange} />
+             <input type="text"  className="form-input option  " placeholder='Enter your username'  id='username' name='username'  value={values.username} onChange={handleChange} />
+             <select></select>
              {errors.username && <p>{errors.username}</p>}
          </div>  
          <div className="form-inputs mt-4">
