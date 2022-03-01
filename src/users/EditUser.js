@@ -1,14 +1,15 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
-import {useHistory} from 'react-router-dom'
-import './Form.css';
+import {useHistory,useParams} from 'react-router-dom'
+import './editUser.css';
 import {Link} from 'react-router-dom';
 
 
 
 
-const FormSignup = () => {
+const EditUser = () => {
     let history = useHistory();
+    const  {id} = useParams();
     const [errors, seterrors] = useState({});
     const [isSubmit, setisSubmit] = useState(false);
     const [values, setvalues] = useState({
@@ -19,6 +20,16 @@ const FormSignup = () => {
         phonenumber:'',
         user:''
     })
+    
+    const loadUser = async () => {
+      const result = await axios.get(`http://localhost:8081/users/${id}`);
+      // console.log(result);
+      setvalues(result.data);
+      
+    }
+    useEffect(() => {
+         loadUser()
+    },[])
     const handleChange = e =>{
         const { name, value} = e.target
         setvalues({
@@ -31,7 +42,7 @@ const FormSignup = () => {
     e.preventDefault();
     seterrors(validate(values));
     setisSubmit(true);
-    await axios.post("http://localhost:8081/users",values);
+    await axios.put(`http://localhost:8081/users/${id}`,values);
    history.push('/')
     
 }
@@ -144,15 +155,15 @@ const FormSignup = () => {
          </div> 
          <div className="container text-center">
 
-         <button className="btn btn-primary mt-4" type="submit">
-               Sign up 
+         <button className="btn btn-warning btn-block mt-4 w-75" type="submit">
+              Update User
          </button> 
          </div>
-         <span className="form-input-login mt-2">Aready have an account ?<Link to="/login" >Login</Link></span>
+
        </form>
    </div>
    </div>
   )
 }
 
-export default FormSignup
+export default EditUser

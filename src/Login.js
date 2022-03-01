@@ -54,7 +54,7 @@ const handleLogin = e =>{
     {Object.keys(errors).length === 0 && isSubmit ? (<div className='ui message success'>Login Succesfully</div>):(
       <pre>{JSON.stringify(newvalues,undefined,2)}</pre>
     )}
-    <div className="container mt-4 mb-3">
+    <div className="container mt-4 mb-3 w-50 mx-auto p-5">
         <div className="login-heading">
             <h1 className='loginName text-center'>Login</h1>
         </div>
@@ -62,12 +62,12 @@ const handleLogin = e =>{
         <form onSubmit={handleLogin}>
         <div className="mb-3">
             <label for="email" className="form-label">Email address</label>
-            <input type="email" className="form-input" id="email" name='email' value={newvalues.email} onChange={handleChange2} />
+            <input type="email" className="form-control form-control-lg" placeholder="Enter your Email" id="email" name='email' value={newvalues.email} onChange={handleChange2} />
             {errors.email && <p>{errors.email}</p>}
         </div>
         <div className="mb-3">
             <label for="password" className="form-label">Password</label>
-            <input type="password" className="form-input" id="password1" name='password' value={newvalues.password} onChange={handleChange2} />
+            <input type="password" className="form-control form-control-lg" id="password1" placeholder="Enter your Password" name='password' value={newvalues.password} onChange={handleChange2} />
              <p>{errors.password}</p>
         </div>
     
