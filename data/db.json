@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "username": "anu Rajput",
+      "email": "anushkapragati999@gmail.com",
+      "password": "123456",
+      "password2": "123456",
+      "phonenumber": "6299429094",
+      "user": "admin",
+      "id": 11
+    },
+    {
+      "username": "deep Chirag",
+      "email": "akasharakomak999@gmail.com",
+      "password": "1234567",
+      "password2": "1234567",
+      "phonenumber": "6299429094",
+      "user": "user",
+      "id": 12
+    },
+    {
+      "username": "anu",
+      "email": "anushkapragati999@gmail.com",
+      "password": "123456",
+      "password2": "",
+      "phonenumber": "6299",
+      "user": "admin",
+      "id": 17
+    },
+    {
+      "username": "anu singh Rathore",
+      "email": "anushkapragati999@gmail.com",
+      "password": "123456",
+      "password2": "123456",
+      "phonenumber": "6299429094",
+      "user": "admin",
+      "id": 19
+    }
+  ]
+}
