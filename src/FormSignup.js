@@ -93,9 +93,9 @@ const FormSignup = () => {
            <div className="form-inputs mt-4">
              <label htmlFor="username" className="form-label">
                 User
-             </label>            
-             <select id="user"  className="form-control form-control-lg"   name="user"   value={values.user} onChange={handleChange} placeholder='Enter your username' >
-             <option></option>
+             </label>      
+             <select id="user" className="form-control form-control-lg"  name="user"   value={values.user} onChange={handleChange} >
+             <option hidden value="">Enter user/admin</option>
                 <option value="user">User</option>
                 <option value="admin">Admin</option>               
                 </select>
