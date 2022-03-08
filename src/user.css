@@ -1,3 +1,6 @@
 .crud{
     margin-right: 9px;
 }
+.border shadow input{
+    border: 2px solid blue;
+}
