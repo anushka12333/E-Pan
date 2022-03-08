@@ -5,6 +5,8 @@ import FormSignup from './FormSignup'
 import User from './User'
 import NotFound from './NotFound'
 import EditUser from './users/EditUser'
+import './App.css';
+
 // import ViewUser from './users/ViewUser'
 
 

@@ -1,9 +1,3 @@
-.form-inputs p{
-    color: red;
+:-ms-input-placeholder{
+    background-color: beige;
 }
-/* input{
-    width: 30%;
-} */
-/* .form-input{
-    width: 30%;
-} */
