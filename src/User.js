@@ -3,23 +3,33 @@ import {useState,useEffect,useRef} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom';
 import './user.css'
+import usersService from './services/users.service';
 
 
 function User() {
   const [searchResult, setsearchResult] = useState([])
   const inputEl = useRef("");
   const [users, setusers] = useState([])
-  const [Searchterm, setSearchterm] = useState('')
+ const [Searchterm, setSearchterm] = useState('')
 
   useEffect(() => {
    loadusers();   
   }, [])
 
   const loadusers = async () =>{
-    const result = await axios.get("http://localhost:8081/users");
+    // const result = await axios.get(" http://localhost:8087/users");
+    usersService.getAll()
+    .then(response => {
+      console.log("Printing",response.data);
+      setusers(response.data.reverse());
+      setsearchResult(response.data.reverse());
+    })
+    .catch(error => {
+      console.log("Something went wrong",error);
+    })
     // console.log(result);
-    setusers(result.data.reverse())
-    setsearchResult(users);
+    //setusers(result.data.reverse())
+    
     
   }
 
@@ -46,8 +56,17 @@ function User() {
 
   }
   const deleteUser = async id => {
-    await axios.delete(`http://localhost:8081/users/${id}`);
-    loadusers();
+    //await axios.delete(` http://localhost:8087/users/${id}`);
+    usersService.remove(id)
+    .then(response => {
+      console.log('Users deleted Successfully',response.data);  
+      loadusers();    
+    })
+    .catch(error  =>{
+      console.log('"Something went wrong',error);
+      
+    })
+    
   }
 
   return (
@@ -58,9 +77,10 @@ function User() {
       <input
       ref={inputEl}
        type="text" 
-      className='prompt' 
+      className='prompt'     
       value={Searchterm}
-      onChange={searchHandler} placeholder='Search...' />
+      onChange={searchHandler} 
+      placeholder='Search...' />
       <i className="search icon"></i>        
     </div>
     </div>

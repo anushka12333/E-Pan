@@ -1,8 +1,9 @@
 import React,{useEffect,useState} from 'react'
-import axios from 'axios'
+//import axios from 'axios'
 import {useHistory} from 'react-router-dom'
 import './Form.css';
 import {Link} from 'react-router-dom';
+import usersService from './services/users.service';
 
 
 
@@ -17,7 +18,7 @@ const FormSignup = () => {
         password:'',
         password2:'',
         phonenumber:'',
-        user:''
+        userRole:''
     })
     const handleChange = e =>{
         const { name, value} = e.target
@@ -27,12 +28,22 @@ const FormSignup = () => {
         });
     };
     
-   const handleSubmit = async e =>{
+   const handleSubmit =  e =>{
     e.preventDefault();
     seterrors(validate(values));
     setisSubmit(true);
-    await axios.post("http://localhost:8081/users",values);
-   history.push('/')
+    //await axios.post("http://localhost:8087/users",values);
+    usersService.create(values)
+    .then(response => {
+        console.log("user added succesfully",response.data);
+        history.push('/user');
+    })
+    
+    .catch(error =>{
+        console.log("somethngf went wrong",error);
+    })
+   
+    
     
 }
     const validate  =(values) => {
@@ -40,8 +51,8 @@ const FormSignup = () => {
         if(!values.username.trim()){
             errors.username = "Username required"
         }
-        if(values.user.trim()===""){
-            errors.user = "User/admin required"
+        if(values.userRole.trim()===""){
+            errors.userRole = "User/admin required"
         }
     
         if(!values.email){
@@ -91,15 +102,15 @@ const FormSignup = () => {
        <form action="" className="form mt-4" onSubmit={handleSubmit}>
            <h1 >Register</h1>
            <div className="form-inputs mt-4">
-             <label htmlFor="username" className="form-label">
-                User
+             <label htmlFor="userRole" className="form-label">
+                UserRole
              </label>      
-             <select id="user" className="form-control form-control-lg"  name="user"   value={values.user} onChange={handleChange} >
+             <select id="userRole" className="form-control form-control-lg"  name="userRole"   value={values.userRole} onChange={handleChange} >
              <option hidden value="">Enter user/admin</option>
                 <option value="user">User</option>
                 <option value="admin">Admin</option>               
                 </select>
-             {errors.user && <p>{errors.user}</p>}
+             {errors.userRole && <p>{errors.userRole}</p>}
          </div>  
          <div className="form-inputs mt-2">
              <label htmlFor="username" className="form-label">

@@ -3,6 +3,7 @@ import axios from 'axios'
 import {useHistory,useParams} from 'react-router-dom'
 import './editUser.css';
 import {Link} from 'react-router-dom';
+import usersService from '../services/users.service';
 
 
 
@@ -18,13 +19,25 @@ const EditUser = () => {
         password:'',
         password2:'',
         phonenumber:'',
-        user:''
+        userRole:''
     })
     
     const loadUser = async () => {
-      const result = await axios.get(`http://localhost:8081/users/${id}`);
-      // console.log(result);
-      setvalues(result.data);
+     // const result = await axios.get(` http://localhost:8087/users/${id}`);
+      // console.log(result)
+
+     // setvalues(result.data);
+     if(id){
+         usersService.get(id)
+         .then(user => {
+             setvalues(user.data);
+
+         })
+         .catch(error => {
+             console.log('Something went wrong',error);
+             
+         })
+     }
       
     }
     useEffect(() => {
@@ -42,7 +55,26 @@ const EditUser = () => {
     e.preventDefault();
     seterrors(validate(values));
     setisSubmit(true);
-    await axios.put(`http://localhost:8081/users/${id}`,values);
+    //await axios.put(`http://localhost:8081/users/${id}`,values);
+    if(id){
+        usersService.update(values)
+        .then(response => {
+            console.log('Employees data updated succesfully',response.data);
+            history.push('/user');
+        })
+
+    }else{
+        usersService.create(values)
+        .then(response => {
+            console.log("user added succesfully",response.data);
+            history.push('/');
+        })
+        
+        .catch(error =>{
+            console.log("somethngf went wrong",error);
+        });
+       
+    }
    history.push('/')
     
 }
@@ -51,8 +83,8 @@ const EditUser = () => {
         if(!values.username.trim()){
             errors.username = "Username required"
         }
-        if(values.user.trim()===""){
-            errors.user = "User/admin required"
+        if(values.userRole.trim()===""){
+            errors.userRole = "User/admin required"
         }
     
         if(!values.email){
@@ -105,12 +137,12 @@ const EditUser = () => {
              <label htmlFor="username" className="form-label">
                 User
              </label>            
-             <select id="user"  className="form-control form-control-lg"   name="user"   value={values.user} onChange={handleChange} placeholder='Enter your username' >
+             <select id="userRole"  className="form-control form-control-lg"   name="userRole"   value={values.userRole} onChange={handleChange} placeholder='Enter your username' >
              <option></option>
                 <option value="user">User</option>
                 <option value="admin">Admin</option>               
                 </select>
-             {errors.user && <p>{errors.user}</p>}
+             {errors.userRole && <p>{errors.userRole}</p>}
          </div>  
          <div className="form-inputs mt-2">
              <label htmlFor="username" className="form-label">
