@@ -1,4 +1,5 @@
 import './AppliedDocument.css';
+import { Link } from 'react-router-dom';
 
 function AppliedDocument() {
     return (
@@ -9,9 +10,11 @@ function AppliedDocument() {
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav nav-fill w-100">
-      <a class="nav-item nav-link active text-white" href="#">Applied Document <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link text-white" href="#">Verification</a>
-      <a class="nav-item nav-link text-white" href="#">Correction Documents</a>
+      <a class="nav-item nav-link active text-white h5" href="#">Applied Document <span class="sr-only">(current)</span></a>
+      <Link to="/DocumentVerification">
+      <a class="nav-item nav-link text-white" href="#">Verification</a></Link>
+      <Link to="/DocumentCorrection">
+      <a class="nav-item nav-link text-white" href="#">Correction Documents</a></Link>
       <button class="btn btn btn-outline-danger text-warning" type="submit" >Logout</button>
     </div>
   </div>

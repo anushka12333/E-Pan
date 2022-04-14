@@ -9,6 +9,10 @@ import Applynewcard from './users/Applynewcard'
 import FileUpload from './documentmanagement/FileUpload'
 import './App.css';
 import AppliedDocument from './Admin/AppliedDocument';
+import TrackStatus from './TrackStatus';
+import TrackStatusResults from './TrackStatusResults';
+import DocumentCorrection from './Admin/DocumentCorrection';
+import DocumentVerification from './Admin/DocumentVerification';
 
 
 
@@ -41,6 +45,19 @@ function App() {
       <Route exact path="/appliedDocument">
         <AppliedDocument />
       </Route>
+      <Route exact path="/TrackStatus">
+        <TrackStatus />
+      </Route>
+      <Route exact path="/TrackStatusResults">
+        <TrackStatusResults />
+      </Route>
+      <Route exact path="/DocumentCorrection">
+        <DocumentCorrection />
+      </Route>
+      <Route exact path="/DocumentVerification">
+        <DocumentVerification />
+      </Route>
+
       {/* <Route exact path="/user/:id">
         <ViewUser />
       </Route> */}
