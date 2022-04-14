@@ -8,6 +8,7 @@ import EditUser from './users/EditUser'
 import Applynewcard from './users/Applynewcard'
 import FileUpload from './documentmanagement/FileUpload'
 import './App.css';
+import AppliedDocument from './Admin/AppliedDocument';
 
 
 
@@ -36,6 +37,9 @@ function App() {
       </Route>
       <Route exact path="/fileUpload">
         <FileUpload />
+      </Route>
+      <Route exact path="/appliedDocument">
+        <AppliedDocument />
       </Route>
       {/* <Route exact path="/user/:id">
         <ViewUser />
