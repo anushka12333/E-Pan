@@ -95,9 +95,7 @@ const FormSignup = () => {
   return (
       
     <div className="container text-center">
-      {Object.keys(errors).length === 0 && isSubmit ? (<div className='ui message success'>Signup Succesfully</div>):(
-      <pre>{JSON.stringify(values,undefined,2)}</pre>
-    )}
+      
     <div className="form-content-right w-50 mx-auto p-5 ">
        <form action="" className="form mt-4" onSubmit={handleSubmit}>
            <h1 >Register</h1>

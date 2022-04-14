@@ -122,8 +122,6 @@ const EditUser = () => {
         }
       },[errors]);
  
-//  const {handleChange,values, handleSubmit,errors} = useForm(validate);
-
   return (
       
     <div className="container text-center">
