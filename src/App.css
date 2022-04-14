@@ -1,12 +1,12 @@
 .App {
-    height: 125vh;
+    height: 150vh;
     display: flexbox;
     color: rgb(128, 67, 67);
     text-align: center;
-    background-color: aquamarine;
+    background-color: burlywood;
   }
   .formCenter {
-    margin-bottom: 100px;
+    margin-bottom: 300px;
   }
   
   .formTitle {

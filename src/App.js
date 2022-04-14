@@ -5,9 +5,10 @@ import FormSignup from './FormSignup'
 import User from './User'
 import NotFound from './NotFound'
 import EditUser from './users/EditUser'
+import Applynewcard from './users/Applynewcard'
+import FileUpload from './documentmanagement/FileUpload'
 import './App.css';
 
-// import ViewUser from './users/ViewUser'
 
 
 
@@ -29,6 +30,12 @@ function App() {
       </Route>
       <Route exact path="/user/edit/:id">
         <EditUser />
+      </Route>
+      <Route exact path="/applynewcard">
+        <Applynewcard />
+      </Route>
+      <Route exact path="/fileUpload">
+        <FileUpload />
       </Route>
       {/* <Route exact path="/user/:id">
         <ViewUser />
